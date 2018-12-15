@@ -244,7 +244,7 @@ function testAPI()
       debugger;
     for(let i in response.posts.paging.next){
       //console.log(response.posts.data[i].created_time);
-      let dates = response.posts.data[i].created_time;
+      var yy = response.posts.data[i].created_time;
       
       var d = new Date();
 //var strDate = d.toString('yyyy/MM/dd');
@@ -252,7 +252,7 @@ var y = d.getFullYear();
 var m = d.getMonth();
 var d = d.getDate();
 var str = y + '/' + (m+1) + '/' + d;
-var yy = dates;
+//var yy = dates;
 var y1 = yy.getFullYear();
 var m1 = yy.getMonth();
 var d1 = yy.getDate();
