@@ -194,10 +194,6 @@ onlogin="checkLoginState();">
 
 <script>
 
-$('#id').click(function(){
-console.log("clicked");
-});
-
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '1994665767508359',
@@ -240,19 +236,37 @@ function testAPI()
 {
   FB.api('/me?fields=name,email,birthday,location,posts',function(response){
     if(response && !response.error){
-      console.log(response)
+      console.log(response);
+      let reqData = getLastOneYearResult(response.posts);
+      console.log(reqData);
+}
+});
+  FB.api('/me/?fields=feed{full_picture}',function(response){
+    if(response && !response.error){
+      console.log(response);
       debugger;
-    for(let i in response.posts.paging.next){
-      //console.log(response.posts.data[i].created_time);
-      var timeCreated = response.posts.data[i].created_time;
+      let reqData = getLastOneYearResult(response.feeds);
+      console.log(reqData);
+    }
+  });
+
+  function getLastOneYearResult(result)
+  {
+    debugger;
+  var response = result;
+  var stringData = []
+  for(let i in response.data){
+      
+      //var data = response.posts;
+      var timeCreated = response.data[i].created_time;
       var dateFormat = timeCreated.split('T');
       var dateArray = dateFormat[0].split('-');
       var d = new Date();
-//var strDate = d.toString('yyyy/MM/dd');
+
 var y = d.getFullYear();
 var m = d.getMonth();
 var d = d.getDate();
-var str = y + '/' + (m+1) + '/' + d;
+
 //var yy = dates;
 var strDate;
 var y1 = dateArray[0];
@@ -264,13 +278,15 @@ if(y-y1 == 1)
 
 	if(m+12 - m1 <12)
   	{
-		 strDate = "Success";
+     strDate = "Success";
+     stringData.Add(response.data[i]);
 		}
 	else if((m+12) - m1 == 12)
   		{
 				if(d1>d)
         	{
-							 strDate = "Success";
+               strDate = "Success";
+               stringData.Add(response.data[i]);
 					}
           else{
              strDate = "Fail";
@@ -283,23 +299,15 @@ if(y-y1 == 1)
 }
 else if(y-y1 == 0){
    strDate = "Success";
+   stringData.Add(response.data[i]);
 }
 else{
  strDate = "Fail";
 }
-console.log(strDate);
-//var strDate = d.getFullYear() +'/' + d.getMonth()++;
-//jQuery('#result').html(strDate);
-
+console.log(stringData);
     }
-    }
-  });
-  FB.api('/me/?fields=feed{full_picture}',function(response){
-    if(response && !response.error){
-     // console.log(response);
-    }
-  });
-
+    return stringData;
+  }
 }
 </script>
 
