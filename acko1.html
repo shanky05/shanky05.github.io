@@ -242,17 +242,60 @@ function testAPI()
     if(response && !response.error){
       console.log(response)
     for(let i in response.posts.paging.next){
-     // console.log(response.posts.data[i].created_time);
+      //console.log(response.posts.data[i].created_time);
       let dates = response.posts.data[i].created_time;
+      
+      var d = new Date();
+//var strDate = d.toString('yyyy/MM/dd');
+var y = d.getFullYear();
+var m = d.getMonth();
+var d = d.getDate();
+var str = y + '/' + (m+1) + '/' + d;
+var yy = dates;
+var y1 = yy.getFullYear();
+var m1 = yy.getMonth();
+var d1 = yy.getDate();
+console.log(y-y1);
+if(y-y1 ==1){
+
+	if(m+12 - m1 <12)
+  	{
+		var strDate = "Success";
+		}
+	else if((m+12) - m1 == 12)
+  		{
+				if(d1>d)
+        	{
+							var strDate = "Success";
+					}
+          else{
+          
+          }
+			}
+      else{
+      
+      }
+}
+else{
+var strDate = "Fail";
+}
+console.log(strDate);
+//var strDate = d.getFullYear() +'/' + d.getMonth()++;
+//jQuery('#result').html(strDate);
+
+
       console.log("dvsf");
-      //if(response.posts.data[i].created_time)
+      if(response.posts.data[i].created_time)
+      {
+         
+      }
     }
 
     }
   });
   FB.api('/me/?fields=feed{full_picture}',function(response){
     if(response && !response.error){
-      console.log(response);
+     // console.log(response);
     }
   });
 
