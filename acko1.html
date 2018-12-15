@@ -279,14 +279,14 @@ if(y-y1 == 1)
 	if(m+12 - m1 <12)
   	{
      strDate = "Success";
-     stringData.Add(response.data[i]);
+     stringData.push(response.data[i]);
 		}
 	else if((m+12) - m1 == 12)
   		{
 				if(d1>d)
         	{
                strDate = "Success";
-               stringData.Add(response.data[i]);
+               stringData.push(response.data[i]);
 					}
           else{
              strDate = "Fail";
@@ -299,7 +299,7 @@ if(y-y1 == 1)
 }
 else if(y-y1 == 0){
    strDate = "Success";
-   stringData.Add(response.data[i]);
+   stringData.push(response.data[i]);
 }
 else{
  strDate = "Fail";
