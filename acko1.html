@@ -254,35 +254,38 @@ var m = d.getMonth();
 var d = d.getDate();
 var str = y + '/' + (m+1) + '/' + d;
 //var yy = dates;
+var strDate;
 var y1 = dateArray[0];
 var m1 = dateArray[1];
 var d1 = dateArray[2];
 console.log(y-y1);
-if(y-y1 == 1){
+if(y-y1 == 1)
+{
 
 	if(m+12 - m1 <12)
   	{
-		var strDate = "Success";
+		 strDate = "Success";
 		}
 	else if((m+12) - m1 == 12)
   		{
 				if(d1>d)
         	{
-							var strDate = "Success";
+							 strDate = "Success";
 					}
           else{
-            var strDate = "Fail";
+             strDate = "Fail";
           }
 			}
-      else{
-        var strDate = "Fail";
+      else
+      {
+         strDate = "Fail";
       }
 }
 else if(y-y1 == 0){
-  var strDate = "Success";
+   strDate = "Success";
 }
 else{
-var strDate = "Fail";
+ strDate = "Fail";
 }
 console.log(strDate);
 //var strDate = d.getFullYear() +'/' + d.getMonth()++;
