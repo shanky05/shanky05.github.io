@@ -241,6 +241,7 @@ function testAPI()
   FB.api('/me?fields=name,email,birthday,location,posts',function(response){
     if(response && !response.error){
       console.log(response)
+      debugger;
     for(let i in response.posts.paging.next){
       //console.log(response.posts.data[i].created_time);
       let dates = response.posts.data[i].created_time;
