@@ -242,9 +242,9 @@ function testAPI()
     if(response && !response.error){
       console.log(response)
     for(let i in response.posts.paging.next){
-      console.log(response.posts.data[i].created_time);
+     // console.log(response.posts.data[i].created_time);
       let dates = response.posts.data[i].created_time;
-      console.log("ans is"+ dates.toLocaleDateString("en-US"));
+      console.log("dvsf");
       //if(response.posts.data[i].created_time)
     }
 
