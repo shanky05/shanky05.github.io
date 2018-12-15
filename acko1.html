@@ -244,8 +244,9 @@ function testAPI()
       debugger;
     for(let i in response.posts.paging.next){
       //console.log(response.posts.data[i].created_time);
-      var yy = response.posts.data[i].created_time;
-      
+      var timeCreated = response.posts.data[i].created_time;
+      var dateFormat = timeCreated.split('T');
+      var dateArray = dateFormat.split('-');
       var d = new Date();
 //var strDate = d.toString('yyyy/MM/dd');
 var y = d.getFullYear();
@@ -253,9 +254,9 @@ var m = d.getMonth();
 var d = d.getDate();
 var str = y + '/' + (m+1) + '/' + d;
 //var yy = dates;
-var y1 = yy.getFullYear();
-var m1 = yy.getMonth();
-var d1 = yy.getDate();
+var y1 = dateArray[0];
+var m1 = dateArray[1];
+var d1 = dateArray[2];
 console.log(y-y1);
 if(y-y1 ==1){
 
