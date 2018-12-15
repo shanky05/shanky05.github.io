@@ -236,17 +236,26 @@ function testAPI()
 {
   FB.api('/me?fields=name,email,birthday,location,posts',function(response){
     if(response && !response.error){
-      console.log(response);
       let reqData = getLastOneYearResult(response.posts);
       console.log(reqData);
+      for(var i=0;i<4;i++){
+       var responseFromAjax = LoadNextDataSet(response.posts.paging.next);
+        reqData = getLastOneYearResult(responseFromAjax.posts);
+        console.log(reqData);
+      }
 }
 });
   FB.api('/me/?fields=feed{full_picture}',function(response){
     if(response && !response.error){
       console.log(response);
       debugger;
-      let reqData = getLastOneYearResult(response.feeds);
+      let reqData = getLastOneYearResult(response.feed);
       console.log(reqData);
+      for(var i=0;i<4;i++){
+       var responseFromAjax = LoadNextDataSet(response.posts.paging.next);
+        reqData = getLastOneYearResult(responseFromAjax.posts);
+        console.log(reqData);
+      }
     }
   });
 
@@ -308,6 +317,18 @@ console.log(stringData);
     }
     return stringData;
   }
+
+function LoadNextDataSet(requestData){
+  debugger;
+  $.ajax({
+    url: requestData,
+     success: function(result){
+    return result;
+  }});
+
+}
+
+
 }
 </script>
 
