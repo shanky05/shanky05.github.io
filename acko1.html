@@ -246,7 +246,7 @@ function testAPI()
       //console.log(response.posts.data[i].created_time);
       var timeCreated = response.posts.data[i].created_time;
       var dateFormat = timeCreated.split('T');
-      var dateArray = dateFormat.split('-');
+      var dateArray = dateFormat[0].split('-');
       var d = new Date();
 //var strDate = d.toString('yyyy/MM/dd');
 var y = d.getFullYear();
